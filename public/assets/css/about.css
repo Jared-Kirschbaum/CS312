@@ -1,0 +1,86 @@
+.navbar {
+    background-color: rgb(26, 27, 24)000;
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
+    height: 100px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 36%;
+  }
+  
+
+  .navbar a {
+    font-family: 'Arial';
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 20px;
+}
+  
+  .navbar a:hover {
+    background-color: #ffffff;
+    color: black;
+  }
+  
+  .navbar a.active {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+  }
+
+  .navbar i {
+    height: 100px;
+    width: 100px;
+    float: left;
+    padding-left: 2%;
+    margin: 0 auto;
+    padding: 10px 0;
+    padding-right: 50%;
+}
+
+.navbar i img {
+object-fit: cover;
+height: 100px;
+
+}
+
+  body {
+    background-color: rgb(26, 27, 24);
+  }
+
+  p {
+    font-family: 'Arial';
+    font-size: larger;
+    text-align: justify;
+    color: white;
+    margin-right: 20px;
+  }
+
+  /* Style for the container */
+  .container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+  }
+  
+
+
+
+  h3 {
+    font-family: "Arial";
+    color: white;
+}
+
+
+h1 {
+    font-family: "Arial";
+    font-size: 50px;
+    color: white;
+    text-align:center;
+
+}
