@@ -16,15 +16,15 @@ class Controller_Generator extends Controller
 		
 		$valid_size = false;
 		$valid_colors = false;
-
-		if ($size_validation->run(intval($size))) {
+		
+		if ($size_validation->run(array('size'=>$size))) {
 			$valid_size = true;
 		}
 		else {
 			// validation failed
 		}
 
-		if ($colors_validation->run(intval($colors))) {
+		if ($colors_validation->run(array('colors'=>$colors))) {
 			$valid_colors = true;
 		}
 		else {

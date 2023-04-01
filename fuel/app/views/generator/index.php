@@ -24,7 +24,29 @@
 
         <input type="submit" value="Submit"> 
       </form>
-      <p><?php echo $size ?></p>
+      <p>Size: <?php echo $size ?></p>
+      <p><?php
+      if ($valid_size) {
+        echo 'SUCCESS: ';
+        echo $size . ' is a valid size of rows and columns.';
+      }
+      else {
+        echo 'FAILURE: ';
+        echo $size . ' is an invalid size of rows and columns.';
+      }
+      ?></p>
+      <br>
+      <p>Colors: <?php echo $colors ?></p>
+      <p><?php
+      if ($valid_colors) {
+        echo 'SUCCESS: ';
+        echo $colors . ' is a valid number of colors.';
+      }
+      else {
+        echo 'FAILURE: ';
+        echo $colors . ' is an invalid number of colors.';
+      }
+      ?></p>
     </div>
   </body>
 </html>
