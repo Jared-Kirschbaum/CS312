@@ -1,6 +1,15 @@
 <?php
 class Controller_Generator extends Controller
 {
+	  public function action_home() {
+            return Response::forge(View::forge('generator/home'));
+        }
+
+        public function action_about() {
+
+            return Response::forge(View::forge('generator/about'));
+        }
+
 	public function action_index()
 	{
 		$size = Input::get('size', 10);
