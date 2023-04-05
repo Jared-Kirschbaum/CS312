@@ -119,10 +119,12 @@
       table,
       td {
           border: 1px solid #333;
+          color: white;
+          table-layout: fixed;
+          width: 75%;
       }
       thead,
       tfoot {
-          background-color: #333;
           color: #fff;
       }
     </style>
@@ -137,16 +139,6 @@
   <body>
     <div>
       <form method="get" action="generator.php">
-        <label for="size">Number of rows and columns?</label>
-        <input type="number" name="size" id="size" value=<?php echo $size;?> onClick="this.select();">
-        <?php
-        if ($valid_size == false) {
-          $size_error_placeholder = 'error';
-        }
-        ?>
-        <span class=<?php echo $size_error_placeholder ?>><?php echo $size_error_message;?></span>
-        <br><br>
-
         <label for="colors">Number of colors?</label>
         <input type="number" name="colors" id="colors" value=<?php echo $colors;?> onClick="this.select();">
         <?php
@@ -157,22 +149,57 @@
         <span class=<?php echo $colors_error_placeholder ?>><?php echo $colors_error_message;?></span>
         <br><br>
 
+        <label for="size">Size of table 2?</label>
+        <input type="number" name="size" id="size" value=<?php echo $size;?> onClick="this.select();">
+        <?php
+        if ($valid_size == false) {
+          $size_error_placeholder = 'error';
+        }
+        ?>
+        <span class=<?php echo $size_error_placeholder ?>><?php echo $size_error_message;?></span>
+        <br><br>
+
         <input type="submit" value="Submit"> 
       </form>
 
       <br>
       <?php if($valid_size && $valid_colors): ?>
+        <p>Table 1<p>
         <table>
-          <thead>
-              <tr>
-                  <th colspan="2">CCG Table</th>
-              </tr>
-          </thead>
+          <tbody>
+              <?php
+              for ($row = 0; $row < $colors; $row++) {
+                $display_row = $row + 1;
+                echo "<tr>";
+                echo "<td >Color drop-down</td>";
+                echo "<td >Selected color</td>";
+                echo "</tr>";
+              }
+              ?>
+          </tbody>
+        </table>
+        <br>
+        <p>Table 2<p>
+        <table>
           <tbody>
               <tr>
-                  <td>Size: <?php echo $size ?></td>
-                  <td>Colors: <?php echo $colors ?></td>
+                <td></td>
+                <?php
+                for ($letter = 0; $letter < $size; $letter++) {
+                  echo "<td>$alphabet[$letter]</td>";
+                }
+                ?>
               </tr>
+                <?php
+                for ($row = 0; $row < $size; $row++) {
+                  $display_row = $row + 1;
+                  echo "<tr><td>$display_row</td>";
+                  for ($letter = 0; $letter < $size; $letter++) {
+                    echo "<td></td>";
+                  }
+                  echo "</tr>";
+                }
+                ?>
           </tbody>
         </table>
       <?php endif; ?>
