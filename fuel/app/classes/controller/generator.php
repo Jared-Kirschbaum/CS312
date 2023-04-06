@@ -39,6 +39,8 @@ class Controller_Generator extends Controller
 
 		$size_error_message = '';
 		$colors_error_message = '';
+
+		$alphabet = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
 		
 		if ($size_validation->run(array('size'=>$size))) {
 			$valid_size = true;
@@ -62,7 +64,8 @@ class Controller_Generator extends Controller
 			'size_error_placeholder' => $size_error_placeholder,
 			'colors_error_placeholder' => $colors_error_placeholder,
 			'size_error_message' => $size_error_message,
-			'colors_error_message' => $colors_error_message
+			'colors_error_message' => $colors_error_message,
+			'alphabet' => $alphabet
 		)));
 	}
 }
