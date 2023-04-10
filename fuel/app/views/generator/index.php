@@ -127,6 +127,14 @@
       tfoot {
           color: #fff;
       }
+
+      .TableOneLeft {
+        width: 20%;
+      }
+
+      .TableOneRight {
+        width: 80%;
+      }
     </style>
   </head>
 
@@ -171,8 +179,8 @@
               for ($row = 0; $row < $colors; $row++) {
                 $display_row = $row + 1;
                 echo "<tr>";
-                echo "<td >Color drop-down</td>";
-                echo "<td >Selected color</td>";
+                echo "<td class=TableOneLeft>Color drop-down</td>";
+                echo "<td class=TableOneRight>Selected color</td>";
                 echo "</tr>";
               }
               ?>
