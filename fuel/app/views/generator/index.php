@@ -204,7 +204,13 @@
 
         }
 
-    
+          .TableOneLeft {
+        width: 20%;
+      }
+
+      .TableOneRight {
+        width: 80%;
+      }
 
   </style> 
 
@@ -480,9 +486,9 @@
 
                 echo "<tr>";
 
-                echo "<td id='colorDropdown{$row}'>Color drop-down</td>";
+                echo "<td class=TableOneRight id='colorDropdown{$row}'>Color drop-down</td>";
 
-                echo "<td >Selected color</td>";
+                echo "<td class=TableOneLeft>Selected color</td>";
 
                 echo "</tr>";
 
