@@ -18,7 +18,7 @@ return array(
 	 *
 	 */
 
-	'_root_' => 'generator/index',
+	'_root_' => 'generator/home',
         'home' => 'generator/home.php',
         'about' => 'generator/about',
         
