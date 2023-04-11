@@ -168,7 +168,7 @@ i {
       <i><?php echo Asset::img('logo.png', array('style' => 'width: 160x; height: 80px;'))?></i>
       <a href="home.html">Home</a>
       <a class = "active" href="about.html">About</a>
-      <a href="/~jaredk1/m1">Color Coordinate Generation</a>
+      <a href="index">Color Coordinate Generation</a>
     </div>
     <p></p>
     <h1>Company Leadership</h1>

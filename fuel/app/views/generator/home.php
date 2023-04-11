@@ -188,9 +188,9 @@ h1 {
   <body>
     <div class="navbar">
       <i><?php echo Asset::img('logo.png', array('style' => 'width: 160x; height: 80px;'))?></i>
-      <a class = "active" href="home.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="/~jaredk1/m1">Color Coordinate Generation</a>
+      <a class = "active" href="/~jaredk1/m1">Home</a>
+      <a href="/~jaredk1/m1/index/generator/about">About</a>
+      <a href="/~jaredk1/m1/index/generator/index">Color Coordinate Generation</a>
     </div>
     <div class="container">
         <div class = "container_two">

@@ -54,6 +54,15 @@ $alphabet = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P
 
         }
 
+.t1 {
+    width = 20%;
+}
+
+.t2 {
+
+    width = 80%;
+}
+
     </style>
 
 </head>
@@ -90,9 +99,9 @@ $alphabet = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P
 
                 echo "<tr>";
 
-                echo "<td>{$colors[$row]}</td>";
+                echo "<td class=t1 >{$colors[$row]}</td>";
 
-                echo "<td>Selected color</td>";
+                echo "<td class=t2 >Selected color</td>";
 
                 echo "</tr>";
 
