@@ -549,7 +549,6 @@
 
 
 
-
             function createDropdown(row) {
 
 
@@ -752,7 +751,8 @@
 
                 }
 
-
+                let selectedColor = Array.from(selectedColors)[0] // default to the color in the first row
+                document.getElementById('selectedColor').innerHTML = selectedColor
 
 
 
@@ -779,7 +779,17 @@
 
 
             });
+            $('.TableOneRight').on('click', function () {
+              let color = document.getElementById(`color${event.currentTarget.id}`).value
+              selectedColor = color
+              document.getElementById('selectedColor').innerHTML = color
+            });
 
+            $('.tableTwoCell').on('click', function () {
+              $(`#${event.currentTarget.id}`).css({
+                'background-color': selectedColor
+              })
+            });
 
 
             }
@@ -933,8 +943,7 @@
       </form>
 
 
-
-
+     
 
 
 
@@ -947,8 +956,6 @@
 
 
         <p>Table 1<p>
-
-
 
         <table>
 
@@ -968,8 +975,6 @@
 
                 $display_row = $row + 1;
 
-
-
                 echo "<tr>";
 
 
@@ -978,7 +983,7 @@
 
 
 
-                echo "<td class=TableOneRight >Selected color</td>";
+                echo "<td class=TableOneRight id='{$row}'><button>Select Color</button></td>";
 
 
 
@@ -1012,7 +1017,7 @@
 
         <p>Table 2<p>
 
-
+        <span>Selected color: <span id='selectedColor'></span></span>
 
         <table>
 
@@ -1074,7 +1079,7 @@
 
 
 
-                          echo "<td></td>";
+                          echo "<td class=tableTwoCell id='{$alphabet[$letter]}{$display_row}'></td>";
 
 
 
