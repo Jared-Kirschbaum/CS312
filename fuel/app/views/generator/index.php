@@ -540,10 +540,22 @@
 
             const colorOptions = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'grey', 'brown', 'black', 'teal'];
 
+            let colorCoordinates = {
+              "red": [],
+              "orange": [],
+              "yellow": [],
+              "green": [],
+              "blue": [],
+              "purple": [],
+              "grey": [],
+              "brown": [],
+              "black": [],
+              "teal": []
+            }
+
 
 
             let selectedColors = new Set();
-
 
 
 
@@ -603,6 +615,12 @@
 
 
                 select.on('change', function () {
+                    // DISPLAY COLOR COORDINATES
+                    let topTable = document.getElementsByClassName("TableOneLeft").length // for every row of color coordinates
+                    for (let c = 0; c < topTable; c++) {
+                      let color = document.getElementById(`color${c}`).value
+                      document.getElementById(c).children[1].innerHTML = colorCoordinates[color].join(", ")
+                    }
 
 
 
@@ -752,7 +770,8 @@
 
                 }
 
-
+                let selectedColor = Array.from(selectedColors)[0] // default to the color in the first row
+                document.getElementById('selectedColor').innerHTML = selectedColor
 
 
 
@@ -779,7 +798,53 @@
 
 
             });
+            $('.TableOneRight').on('click', function () {
+              let color = document.getElementById(`color${event.currentTarget.id}`).value
+              selectedColor = color
+              document.getElementById('selectedColor').innerHTML = color
 
+            });
+
+            $('.tableTwoCell').on('click', function () {
+              $(`#${event.currentTarget.id}`).css({
+                'background-color': selectedColor
+              })
+
+              // COUNT COLOR COORDINATES
+              let newColorCoordinates = {
+              "red": [],
+              "orange": [],
+              "yellow": [],
+              "green": [],
+              "blue": [],
+              "purple": [],
+              "grey": [],
+              "brown": [],
+              "black": [],
+              "teal": []
+            }
+
+              let table = document.getElementById("tableTwoBottom")
+              for (let r = 1; r < table.rows.length; r++) { // count colors and update object
+                for (let c = 1; c < table.rows[r].cells.length; c++) {
+                  let color = table.rows[r].cells[c].style["backgroundColor"] // e.g. 'green'
+                  let coordinate = table.rows[r].cells[c].id // e.g. 'A4'
+                  if (color !== '') {
+                    newColorCoordinates[color].push(coordinate)
+                    newColorCoordinates[color] = newColorCoordinates[color].sort()
+                  }
+                }
+              }
+
+              colorCoordinates = newColorCoordinates
+
+              // DISPLAY COLOR COORDINATES
+              let topTable = document.getElementsByClassName("TableOneLeft").length // for every row of color coordinates
+              for (let c = 0; c < topTable; c++) {
+                let color = document.getElementById(`color${c}`).value
+                document.getElementById(c).children[1].innerHTML = colorCoordinates[color].join(", ")
+              }
+            });
 
 
             }
@@ -933,8 +998,7 @@
       </form>
 
 
-
-
+     
 
 
 
@@ -947,8 +1011,6 @@
 
 
         <p>Table 1<p>
-
-
 
         <table>
 
@@ -968,8 +1030,6 @@
 
                 $display_row = $row + 1;
 
-
-
                 echo "<tr>";
 
 
@@ -978,7 +1038,10 @@
 
 
 
-                echo "<td class=TableOneRight >Selected color</td>";
+                echo "<td class=TableOneRight id='{$row}'>
+                <button>Select Color</button>
+                <span id=`coordinateRow{$row}`></span>
+                </td>";
 
 
 
@@ -1012,9 +1075,9 @@
 
         <p>Table 2<p>
 
+        <span>Selected color: <span id='selectedColor'></span></span>
 
-
-        <table>
+        <table id="tableTwoBottom">
 
 
 
@@ -1074,7 +1137,7 @@
 
 
 
-                          echo "<td></td>";
+                          echo "<td class=tableTwoCell id='{$alphabet[$letter]}{$display_row}'></td>";
 
 
 
