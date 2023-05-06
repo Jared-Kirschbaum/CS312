@@ -814,6 +814,12 @@
 
               $('#printButton').on('click', function () {
 
+                let selectedColorValues = [];
+
+                  for (let index = 0; index < <?= json_encode($colors) ?>; index++) {
+                    let color = document.getElementById(`color${index}`).value;
+                    selectedColorValues.push(color);
+                  }
 
 
                 let url = 'printable?size=' + encodeURIComponent(<?= json_encode($size) ?>) +
