@@ -4,7 +4,7 @@ $size = isset($_GET['size']) ? intval($_GET['size']) : 10;
 
 $colors = isset($_GET['colors']) ? json_decode($_GET['colors']) : array();
 
-
+$colorCoordinates = isset($_GET['colorCoordinates']) ? json_decode($_GET['colorCoordinates'], true) : array();
 
 $alphabet = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
 
@@ -93,19 +93,22 @@ $alphabet = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P
 
             <?php
 
-            for ($row = 0; $row < count($colors); $row++) {
+                for ($row = 0; $row < count($colors); $row++) {
 
-                $display_row = $row + 1;
+                    $display_row = $row + 1;
 
-                echo "<tr>";
+                    echo "<tr>";
 
-                echo "<td class=t1 >{$colors[$row]}</td>";
+                    echo "<td class=t1 >{$colors[$row]}</td>";
 
-                echo "<td class=t2 >Selected color</td>";
+                    $color = strtolower($colors[$row]);
 
-                echo "</tr>";
+                    $coordinates = isset($colorCoordinates[$color]) ? implode(', ', $colorCoordinates[$color]) : '';
 
-            }
+                    echo "<td class=t2 >$coordinates</td>";
+
+                    echo "</tr>";
+                }
 
             ?>
 
