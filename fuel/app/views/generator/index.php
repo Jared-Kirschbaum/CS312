@@ -818,9 +818,9 @@
 
                 let url = 'printable?size=' + encodeURIComponent(<?= json_encode($size) ?>) +
 
-
-
-                '&colors=' + encodeURIComponent(JSON.stringify(Array.from(selectedColors)));
+                '&colors=' + encodeURIComponent(JSON.stringify(Array.from(selectedColors))) +
+                
+                '&colorCoordinates=' + encodeURIComponent(JSON.stringify(colorCoordinates));
 
 
 
@@ -1224,5 +1224,4 @@
 
 
 </html>
-
 
