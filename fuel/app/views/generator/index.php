@@ -610,19 +610,12 @@
 
 
 
-
-
-
+                let oldColor = null
+                select.on('click', function () {
+                  oldColor = document.getElementById(event.currentTarget.id).value
+                })
 
                 select.on('change', function () {
-                    // DISPLAY COLOR COORDINATES
-                    let topTable = document.getElementsByClassName("TableOneLeft").length // for every row of color coordinates
-                    for (let c = 0; c < topTable; c++) {
-                      let color = document.getElementById(`color${c}`).value
-                      document.getElementById(c).children[1].innerHTML = colorCoordinates[color].join(", ")
-                    }
-
-
 
                     let prevValue = $(this).data('prev');
 
@@ -670,8 +663,50 @@
 
                     }
 
+                    let newColorCoordinates = {
+                    "red": [],
+                    "orange": [],
+                    "yellow": [],
+                    "green": [],
+                    "blue": [],
+                    "purple": [],
+                    "grey": [],
+                    "brown": [],
+                    "black": [],
+                    "teal": []
+                  }
+                  // CHANGE CELL COLOR
+                  let newColor = document.getElementById(event.currentTarget.id).value
+                  // if (!selectedColors.contains(newColor)) {
+                    let table = document.getElementById("tableTwoBottom")
+                    for (let r = 1; r < table.rows.length; r++) {
+                      for (let c = 1; c < table.rows[r].cells.length; c++) {
+                        let color = table.rows[r].cells[c].style["backgroundColor"]
+                        let coordinate = table.rows[r].cells[c].id
+                        if (color !== '') {
+                          if (color === oldColor) { // change this color
+                            table.rows[r].cells[c].style["backgroundColor"] = newColor
+                            newColorCoordinates[newColor].push(coordinate)
+                            newColorCoordinates[newColor] = newColorCoordinates[color].sort()
+                          }
+                          else {
+                            newColorCoordinates[color].push(coordinate)
+                            newColorCoordinates[color] = newColorCoordinates[color].sort()
+                          }
+                        }
+                      }
+                    }
+                  // }
 
 
+                  colorCoordinates = newColorCoordinates
+
+                    // DISPLAY COLOR COORDINATES
+                    let topTable = document.getElementsByClassName("TableOneLeft").length // for every row of color coordinates
+                    for (let c = 0; c < topTable; c++) {
+                      let color = document.getElementById(`color${c}`).value
+                      document.getElementById(c).children[1].innerHTML = colorCoordinates[color].join(", ")
+                    }
                 });
 
 
